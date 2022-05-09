@@ -1,0 +1,40 @@
+{
+  "name": "psicomia-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config ./jest.config.ts",
+    "start:dev": "ts-node-dev src/index.ts",
+    "start": "node build/src/index.js",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "firebase": "^9.7.0",
+    "firebase-admin": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.2",
+    "morgan": "^1.10.0",
+    "winston": "^3.7.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/crypto-js": "^4.1.1",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.5.0",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/supertest": "^2.0.12",
+    "jest": "^28.0.3",
+    "mongodb-memory-server": "^8.5.2",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  }
+}

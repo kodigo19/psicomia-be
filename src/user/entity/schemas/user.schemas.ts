@@ -89,6 +89,10 @@ export const UserSchema = new Schema<IUser>({
     type: String,
     required: true,
     unique: true
+  },
+  role: {
+    type: Number,
+    required: true
   }
 },{
   timestamps: {

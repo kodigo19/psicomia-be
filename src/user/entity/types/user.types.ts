@@ -5,6 +5,7 @@ export interface IUser {
   _id: Types.ObjectId | string,
   email: string,
   uid: string,
+  role: number,
   created_at: Date,
   updated_at: Date,
   profile: IProfile,
@@ -42,6 +43,7 @@ export type UserIdType = {
 export type ISignUpUser = {
   email: string,
   password: string,
+  role: number,
 }
 
 export type ISignUpClient = {

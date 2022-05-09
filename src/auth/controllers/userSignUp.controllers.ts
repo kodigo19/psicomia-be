@@ -17,7 +17,7 @@ export const createUser =async (req:Request<{},{},ISignUpUser>, res: Response, n
 export const createClient =async (req:Request<{},{},ISignUpClient>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const {email, password, profile} = req.body;
-    const user = await createUserService({email, password});
+    const user = await createUserService({email, password, role: 2});
     const {_id} = user;
     const client = await createClientService({user_id:_id,profile});
     res.status(201).json({ success: true, data: client });
@@ -29,7 +29,7 @@ export const createClient =async (req:Request<{},{},ISignUpClient>, res: Respons
 export const createPsychologist =async (req:Request<{},{},ISignUpPsychologist>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const {email, password, profile} = req.body;
-    const user = await createUserService({email, password});
+    const user = await createUserService({email, password, role: 3});
     const {_id} = user;
     const psychologist = await createPsychologistService({user_id:_id,profile});
     res.status(201).json({ success: true, data: psychologist });

@@ -1,6 +1,7 @@
+import { Types } from "mongoose";
 import { PsychologistModel } from "../entity/models/psychologist.models";
 
-export const getPsychologistProfileByIdService = async(user_id:string) => {
+export const getPsychologistProfileByIdService = async(user_id:string | Types.ObjectId) => {
   try {
     if (!user_id) throw new Error("Invalid user id");
     console.log(user_id);

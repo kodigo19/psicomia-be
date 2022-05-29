@@ -93,4 +93,8 @@ export type ICreatedUser = {
   disabled: boolean,
 }
 
+export type IGetUserByUid = {
+  uid: string,
+}
+
 export type EditProfile = Omit<IUser, 'id' | 'uid' | 'email' | 'created_at' | 'updated_at'>;

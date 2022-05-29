@@ -5,9 +5,11 @@ import { isAuthenticated } from "../../auth/middlewares/isAuthenticated.middlewa
 import { getClientProfileById } from "../controllers/getClientProfileById.controllers";
 import { getPsychologistProfileById } from "../controllers/getPsychologistProfileById.controllers";
 import { isAuthenticatedAndOwner } from "../../auth/middlewares/isAuthenticatedAndOwner.middleware";
+import { getUserByUid } from "../controllers/getUserByUid.controllers";
 
 const router: Router = Router();
 
+router.get('/users/:uid', isAuthenticated,getUserByUid);
 router.get('/clients/:user_id',isAuthenticatedAndOwner,getClientProfileById);
 router.get('/psychologists/:user_id',isAuthenticatedAndOwner,getPsychologistProfileById);
 router.patch('/clients/:user_id', isAuthenticatedAndOwner, editClientProfileProfileById);

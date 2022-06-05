@@ -8,11 +8,7 @@ export const editPsychologistProfileByIdService = async (
 ): Promise<IPsychologist | null> => {
     // const query = { _id: id}
     try {
-      console.log('user_id');
-        console.log(user_id);
         const psychologist: IPsychologist | null = await PsychologistModel.findOne({user_id:user_id});
-        console.log('---psychologist---');
-        console.log(psychologist);
         if (!psychologist) {
             throw new Error('No psychologist found');
         }
@@ -46,26 +42,9 @@ export const editPsychologistProfileByIdService = async (
           query.$set['profile.gender'] = data.profile.gender;
       }
         if (data.profile.hasOwnProperty('referral')) {
-            if (data.profile.emergency_contact.hasOwnProperty('social_network')) {
-                query.$set['profile.referral.social_network'] = data.profile.referral.social_network;
-            }
-            if (data.profile.referral.hasOwnProperty('partner')) {
-                query.$set['profile.referral.partner'] = data.profile.referral.partner;
-            }
-            if (data.profile.referral.hasOwnProperty('family')) {
-                query.$set['profile.referral.family'] = data.profile.referral.family;
-            }
-            if (data.profile.referral.hasOwnProperty('internet_search')) {
-              query.$set['profile.referral.internet_search'] = data.profile.referral.internet_search;
-            }
-            if (data.profile.referral.hasOwnProperty('other_referral')) {
-              query.$set['profile.referral.other_referral'] = data.profile.referral.other_referral;
-            }
+            query.$set['profile.referral'] = data.profile.referral;
         }
-        console.log('query')
-        console.log(query);
         const updatedClient = await PsychologistModel.findOneAndUpdate({user_id: user_id}, query, {returnDocument: 'after'});
-        console.log(updatedClient)
         return updatedClient;
     } catch (error: any) {
         logger.error(error)

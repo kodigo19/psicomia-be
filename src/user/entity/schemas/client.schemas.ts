@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { IClient } from "../types/client.types";
 
 const Schema = mongoose.Schema;
@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 export const ClientSchema = new Schema<IClient>({
   user_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Client',
+    ref: 'User',
     required: [true, 'is required']
   },
   profile: {
@@ -71,8 +71,34 @@ export const ClientSchema = new Schema<IClient>({
         type: String,
         default: null,
       },
+    },
+  },
+  appointment_credits: [{
+    therapy_code: {
+      type: String,
+    },
+    credits: {
+      type: Number,
     }
-  }
+  }],
+  current_appointments: [{
+    therapy_code: {
+      type: String,
+    },
+    start_date: {
+      type: Date,
+    },
+    end_date: {
+      type: Date,
+    },
+    verified: {
+      type: Boolean,
+    },
+    user_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  }]
 },{
   timestamps: {
     createdAt: 'created_at',
@@ -80,7 +106,7 @@ export const ClientSchema = new Schema<IClient>({
   }
 });
 
-ClientSchema.methods.toJSON = function() {
-  const { user_id, profile } = this.toObject();
-  return { user_id, profile };
-}
+// ClientSchema.methods.toJSON = function() {
+//   const { user_id, profile } = this.toObject();
+//   return { user_id, profile };
+// }

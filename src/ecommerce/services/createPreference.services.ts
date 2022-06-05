@@ -9,27 +9,37 @@ export const createPreferenceService = async(quantity: string, product_code: str
   let title = '';
   let description = '';
   let unit_price = 9999999;
+  let therapy_code = 'ind';
+  let credits = 0; 
   console.log('product_code');
   console.log(product_code);
   if (product_code === 'CIU01') {
     title = 'Cita Individual';
     description = '1 cita por videollamada de 50 min. para 1 persona';
     unit_price = 90;
+    therapy_code = 'ind';
+    credits = 1;
   } else if (product_code === 'CPU01') {
     // Cita de Pareja - Única Cita
     title = 'Cita de Pareja';
     description = '1 cita por videollamada de 50 min. para 2 persona';
     unit_price = 120;
+    therapy_code = 'duo';
+    credits = 1;
   } else if (product_code === 'CIP01') {
     // Cita Individual - Paquete 5 citas
     title = 'Paquete de Citas Individual';
     description = '5 cita por videollamada de 50 min. para 1 persona';
     unit_price = 427.50;
+    therapy_code = 'ind';
+    credits = 5;
   } else if (product_code === 'CPP01') {
     // Cita de Pareja - Paquete 5 Citas
     title = 'Paquete de Citas de Pareja';
     description = '5 cita por videollamada de 50 min. para 2 persona';
     unit_price = 570;
+    therapy_code = 'duo';
+    credits = 5;
   } else {
     throw new Error(`Invalid Product Code`);
   }
@@ -48,6 +58,8 @@ export const createPreferenceService = async(quantity: string, product_code: str
           quantity: Number(quantity),
           description,
           user_id,
+          therapy_code,
+          credits: Number(credits),
         }
       ],
       // TODO Create Back URLS Redirect
@@ -70,6 +82,8 @@ export const createPreferenceService = async(quantity: string, product_code: str
       description,
       user_id,
       preference_id: mpPreference.body.id,
+      therapy_code,
+      credits: Number(credits),
     }
     console.log('antes de crear bdPreference  ');
      const bdPreference = await createAny(MercadopagoPreferenceModel)(bdPreferenceToCreate);

@@ -9,11 +9,7 @@ export const editClientProfileByIdService = async (
 ): Promise<IClient | null> => {
     // const query = { _id: id}
     try {
-        console.log('user_id');
-        console.log(user_id);
         const client: IClient | null = await ClientModel.findOne({user_id:user_id});
-        console.log('---client---');
-        console.log(client);
         if (!client) {
             throw new Error('No client found');
         }
@@ -66,10 +62,7 @@ export const editClientProfileByIdService = async (
                 query.$set['profile.emergency_contact.phoneNumber'] = data.profile.emergency_contact.phoneNumber;
             }
         }
-        console.log('query')
-        console.log(query);
         const updatedClient = await ClientModel.findOneAndUpdate({user_id: user_id}, query, {returnDocument: 'after'});
-        console.log(updatedClient)
         return updatedClient;
     } catch (error: any) {
         logger.error(error)

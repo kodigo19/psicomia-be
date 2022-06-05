@@ -12,7 +12,6 @@ export const editPsychologistProfileProfileById = async (
 ) => {
   try {
     const updatedProfile = await editPsychologistProfileByIdService(req.params.user_id, req.body)
-    console.log(req.body);
     res.status(200).json({ data: updatedProfile })
   } catch (error:any) {
     logger.error(error)

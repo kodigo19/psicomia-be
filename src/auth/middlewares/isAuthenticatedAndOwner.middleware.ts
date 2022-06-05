@@ -29,8 +29,6 @@ export const isAuthenticatedAndOwner = async(
         next(new ApplicationError(403,'Unauthorized'));
       }
     } catch (error: any) {
-      console.log('error');
-      console.log(error);
       next(new ApplicationError(403,'Unauthorized'));
     }
     next();

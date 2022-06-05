@@ -16,10 +16,11 @@ export const createClientService =async (userRequest:ICreateClient) => {
       main_therapy_area,
     }
   }
-   const client = await createAny(ClientModel)(clientToCreate);
+   const createdClient: any = await createAny(ClientModel)(clientToCreate);
+   const _id = createdClient._id
+   const client = await ClientModel.findOne({'_id': _id}).populate('user_id')
    return client as IClient;
  } catch (error: any) {
-   console.log('---error en Create Client Service');
    throw new ApplicationError(403, error.message, error.code === 11000 ? 'Db error' : '');
  } 
 }

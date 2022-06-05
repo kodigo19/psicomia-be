@@ -13,19 +13,20 @@ export interface IPsychologist {
     gender: string | undefined,
     specialization_status: string,
     experience_years: number,
-    referral: {
-      social_network: boolean,
-      partner: boolean,
-      family: boolean,
-      internet_search: boolean,
-      other_referral:boolean,
-    }
-    created_at: Date;
-    updated_at: Date;
-  }
+    referral: string,
+    created_at: Date,
+    updated_at: Date,
+  },
+  current_appointments: [{
+    therapy_code: string,
+    start_date: Date;
+    end_date: Date;
+    verified: Boolean,
+    psychologist_id: string | Types.ObjectId,
+  }]
 }
 
-export type ICreatePsychologist =Omit<IPsychologist, '_id' | 'profile'> & {
+export type ICreatePsychologist =Omit<IPsychologist, '_id' | 'profile' | 'current_appointments'> & {
   profile: Omit<IPsychologist['profile'], 'gender' | 'created_at' | 'updated_at'>
 }
 

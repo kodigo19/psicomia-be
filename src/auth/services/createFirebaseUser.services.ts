@@ -24,8 +24,6 @@ export const createFirebaseUser = async (email: string, password: string): Promi
     }
     return createdUser;
   } catch (error: any) {
-   console.log('errror in createFirebaseUser');
-   console.log(error);
    throw new ApplicationError(403, error.message, error.code === 11000 ? 'Db error' : '');
   }
 }

@@ -6,7 +6,7 @@ import { authValidator, signUpClientSchema, signUpPsychologistSchema } from "../
 
 const router: Router = Router();
 
-router.post('/client/signup', authValidator(signUpClientSchema), createClient);
-router.post('/psychologist/signup', authValidator(signUpPsychologistSchema), createPsychologist);
+router.post('/clients/signup', authValidator(signUpClientSchema), createClient);
+router.post('/psychologists/signup', authValidator(signUpPsychologistSchema), createPsychologist);
 
 export default router;

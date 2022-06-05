@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { UserModel } from "../models/user.models";
 import { IPsychologist } from "../types/psychologist.types";
 
@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 export const PsychologistSchema = new Schema<IPsychologist>({
   user_id: {
     type: Schema.Types.ObjectId,
-    ref: 'Psychologist',
+    ref: 'User',
     required: [true, 'is required']
   },
   profile: {
@@ -47,29 +47,29 @@ export const PsychologistSchema = new Schema<IPsychologist>({
       type: Number,
       required: true,
     },
-    referral:{
-      social_network: {
-        type: String,
-        required: true,
-      },
-      partner: {
-        type: String,
-        required: true,
-      },
-      family: {
-        type: String,
-        required: true,
-      },
-      internet_search: {
-        type: String,
-        required: true,
-      },
-      other_referral: {
-        type: String,
-        required: true,
-      },
+    referral: {
+      type: String,
+      required: true,
+    },
+  },
+  current_appointments: [{
+    therapy_code: {
+      type: String,
+    },
+    start_date: {
+      type: Date,
+    },
+    end_date: {
+      type: Date,
+    },
+    verified: {
+      type: Boolean,
+    },
+    user_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
-  }
+  }]
 },{
   timestamps: {
     createdAt: 'created_at',
@@ -77,8 +77,8 @@ export const PsychologistSchema = new Schema<IPsychologist>({
   }
 });
 
-PsychologistSchema.methods.toJSON = async function() {
-  const { user_id, profile } = this.toObject();
-  return { user_id, profile };
+// PsychologistSchema.methods.toJSON = async function() {
+//   const { user_id, profile } = this.toObject();
+//   return { user_id, profile };
 
-}
+// }

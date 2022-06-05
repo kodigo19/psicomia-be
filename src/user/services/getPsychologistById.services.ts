@@ -1,7 +1,8 @@
 import { Types } from "mongoose";
+import { IPsychologist } from "../entity/types/psychologist.types";
 import { PsychologistModel } from "../entity/models/psychologist.models";
 
-export const getPsychologistProfileByIdService = async(user_id:string | Types.ObjectId) => {
+export const getPsychologistProfileByIdService = async(user_id:string | Types.ObjectId): Promise<IPsychologist | null> => {
   try {
     if (!user_id) throw new Error("Invalid user id");
     console.log(user_id);

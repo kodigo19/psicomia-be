@@ -7,6 +7,7 @@ import { MercadopagoPreferenceModel } from "../entity/models/mercadopago.models"
 import { UserModel } from "../../user/entity/models/user.models";
 import { ApplicationError } from "../../shared/customErrors/ApplicationError";
 import { Types } from "mongoose";
+import { createTherapyCreditsService } from "../services/createTherapyCredits.services";
 
 export const createPayment = async(
   req: Request<{},{},ICreateMercadopagoPayment>,
@@ -14,7 +15,6 @@ export const createPayment = async(
   next: NextFunction
 ) => {
   try {
-    console.log('createPayment')
     const {
       collection_id, collection_status, payment_id,
       status, external_reference, payment_type,
@@ -24,7 +24,6 @@ export const createPayment = async(
 
     
     const mpPreference = await MercadopagoPreferenceModel.findOne({preference_id:preference_id});
-    console.log('mpPreference', mpPreference);
     const obj_preference_id = mpPreference?._id;
 
     await createPaymentService({
@@ -41,6 +40,11 @@ export const createPayment = async(
       merchant_account_id,
       user_id,
     });
+
+    await createTherapyCreditsService({
+      preference_id,
+      user_id
+    })
 
     const userProfile = await UserModel.findById(user_id);
     const clientProfile = await getClientProfileByIdService(user_id);

@@ -12,8 +12,6 @@ export const isAuthenticated = async(
     try {
       await admin.auth().verifyIdToken(authorization!)
     } catch (error: any) {
-      console.log('error');
-      console.log(error);
       next(new ApplicationError(403,'Unauthorized'));
     }
     next();

@@ -68,13 +68,7 @@ export type ISignUpPsychologist = {
     grade_status: string,
     specialization_status: string,
     experience_years: number,
-    referral: {
-      social_network: boolean,
-      partner: boolean,
-      family: boolean,
-      internet_search: boolean,
-      other_referral:boolean,
-    }
+    referral: string,
   }
 }
 

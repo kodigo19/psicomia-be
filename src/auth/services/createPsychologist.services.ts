@@ -12,9 +12,6 @@ export const createPsychologistService =async (userRequest:ICreatePsychologist) 
     nationality, country_grade, grade_status,
     specialization_status, experience_years, referral
   } = profile;
-  const {
-    social_network, partner, family, internet_search, other_referral
-  } = referral;
   const psychologistToCreate = {
     user_id,
     profile:{
@@ -26,19 +23,14 @@ export const createPsychologistService =async (userRequest:ICreatePsychologist) 
       grade_status,
       specialization_status,
       experience_years,
-      referral: {
-        social_network,
-        partner,
-        family,
-        internet_search,
-        other_referral
-      }
+      referral
     }
   }
-   const psychologist = await createAny(PsychologistModel)(psychologistToCreate);
+   const createdPsychologist:any = await createAny(PsychologistModel)(psychologistToCreate);
+   const _id = createdPsychologist._id
+   const psychologist = await PsychologistModel.findOne({'_id': _id}).populate('user_id');
    return psychologist as IPsychologist;
  } catch (error: any) {
-   console.log('---error en Create Psychologist Service');
    throw new ApplicationError(403, error.message, error.code === 11000 ? 'Db error' : '');
  } 
 }

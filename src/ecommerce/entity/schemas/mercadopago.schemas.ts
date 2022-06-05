@@ -26,6 +26,14 @@ export const MercadopagoPreferenceSchema = new Schema<IMercadopagoPreference>({
     ref: 'User',
     required: true
   },
+  therapy_code: {
+    type: String,
+    required: true,
+  },
+  credits: {
+    type: Number,
+    required: true,
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',

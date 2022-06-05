@@ -3,18 +3,14 @@ import Mailgun from 'mailgun.js';
 import { logger } from '../../shared/logger/appLogger';
 import {mailDomain, mailConfig} from './mailConfig';
 
-const mailgun = new Mailgun(FormData);
-
-const mg= mailgun.client(mailConfig);
-
 export const sendMailService = async (recipientData: any, message: any, attachment:string) => {
+  const mailgun = new Mailgun(FormData);
+  const username = 'api';
+  const key = `${process.env.MAILGUN_API_KEY}`;
+  const mailDomain = `${process.env.MAILGUN_DOMAIN}`;
+
+  const mg= mailgun.client({username,key});
   try {
-    console.log('mailgun');
-    console.log('domain', mailDomain)
-    console.log('domain', `${process.env.MAILGUN_DOMAIN}`)
-    console.log('mailConfig', mailConfig)
-    console.log('mailConfig', `${process.env.MAILGUN_API_KEY}`)
-    console.log('mg',mg)
     const {
       recipientFirstName,
       recipientEmail,
@@ -34,7 +30,7 @@ export const sendMailService = async (recipientData: any, message: any, attachme
       }),
     };
     console.log('mg data',data)
-    const msg = await mg.messages.create(mailDomain.domain,data);
+    const msg = await mg.messages.create(mailDomain,data);
   } catch (error: any) {
     logger.error(error);
     console.log('error in sendmail');

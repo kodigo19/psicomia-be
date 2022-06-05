@@ -102,6 +102,6 @@ export const UserSchema = new Schema<IUser>({
 });
 
 UserSchema.methods.toJSON = function() {
-  const { _id, uid, email } = this.toObject();
-  return { _id, uid, email };
+  const { _id, uid, email, role } = this.toObject();
+  return { _id, uid, email, role };
 }

@@ -9,6 +9,8 @@ export interface IMercadopagoPreference {
   created_at: Date,
   updated_at: Date,
   user_id: string | Types.ObjectId,
+  therapy_code: string,
+  credits: number,
 }
 
 export interface IMercadopagoPayment {

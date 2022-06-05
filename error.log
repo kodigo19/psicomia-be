@@ -63,3 +63,29 @@
 {"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
 {"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
 {"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"level":"error","service":"product-service"}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"level":"error","service":"product-service"}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"level":"error","service":"product-service"}
+{"details":"Forbidden","level":"error","message":"Unauthorized","service":"product-service","status":401}
+{"level":"error","service":"product-service"}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"details":"to parameter is missing","level":"error","message":"Bad Request","service":"product-service","status":400}
+{"level":"error","service":"product-service"}
+{"level":"error","service":"product-service"}
+{"level":"error","service":"product-service"}
+{"level":"error","service":"product-service"}

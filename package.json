@@ -7,8 +7,9 @@
   "scripts": {
     "test": "jest --config ./jest.config.ts",
     "start:dev": "ts-node-dev src/index.ts",
-    "start": "node build/src/index.js",
-    "build": "tsc"
+    "start": "node build/index.js",
+    "build": "tsc",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "",
   "license": "ISC",

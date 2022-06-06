@@ -9,7 +9,7 @@
     "start:dev": "ts-node-dev src/index.ts",
     "start": "node build/index.js",
     "build": "tsc",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "author": "",
   "license": "ISC",

@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest --config ./jest.config.ts",
     "start:dev": "ts-node-dev src/index.ts",
-    "start": "node ./index.js",
+    "start": "node build/src/index.js",
     "build": "tsc",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
